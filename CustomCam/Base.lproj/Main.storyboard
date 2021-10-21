@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyw-Nd-OPN">
-                                        <rect key="frame" x="326" y="784" width="50" height="50"/>
+                                        <rect key="frame" x="326" y="82" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="QOh-NT-Cxz"/>
                                             <constraint firstAttribute="height" constant="50" id="lHr-le-cVr"/>
@@ -31,7 +31,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTG-2S-Rob">
-                                        <rect key="frame" x="326" y="72" width="50" height="50"/>
+                                        <rect key="frame" x="326" y="784" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="0dB-4N-2HP"/>
                                             <constraint firstAttribute="height" constant="50" id="z0z-Mb-TQS"/>
@@ -48,16 +48,24 @@
                                             <constraint firstAttribute="height" constant="40" id="x73-zx-aKb"/>
                                         </constraints>
                                     </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bi7-bz-8qJ">
+                                        <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="PbL-al-aJd"/>
+                                            <constraint firstAttribute="width" constant="240" id="xqe-GK-njM"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="0zj-6g-iA4" secondAttribute="trailing" id="46n-6d-E5L"/>
-                                    <constraint firstItem="zyw-Nd-OPN" firstAttribute="top" secondItem="0zj-6g-iA4" secondAttribute="bottom" constant="20" id="I47-b8-fdP"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="zyw-Nd-OPN" secondAttribute="trailing" constant="30" id="LbN-lI-chB"/>
+                                    <constraint firstItem="zyw-Nd-OPN" firstAttribute="top" secondItem="Dcj-44-9nw" secondAttribute="topMargin" constant="30" id="PAh-Cw-WFW"/>
                                     <constraint firstItem="dTG-2S-Rob" firstAttribute="centerX" secondItem="zyw-Nd-OPN" secondAttribute="centerX" id="Qxa-nA-ODN"/>
                                     <constraint firstItem="0zj-6g-iA4" firstAttribute="leading" secondItem="Dcj-44-9nw" secondAttribute="leading" id="UMm-Z0-QCF"/>
-                                    <constraint firstItem="dTG-2S-Rob" firstAttribute="top" secondItem="Dcj-44-9nw" secondAttribute="topMargin" constant="20" id="ZCf-8y-WLS"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="zyw-Nd-OPN" secondAttribute="bottom" constant="20" id="sQ4-j5-Ngu"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="dTG-2S-Rob" secondAttribute="trailing" constant="30" id="WY0-sg-Vfw"/>
+                                    <constraint firstItem="dTG-2S-Rob" firstAttribute="top" secondItem="0zj-6g-iA4" secondAttribute="bottom" constant="20" id="efK-wW-5qT"/>
+                                    <constraint firstItem="bi7-bz-8qJ" firstAttribute="centerY" secondItem="Dcj-44-9nw" secondAttribute="centerY" id="f62-93-Yh4"/>
+                                    <constraint firstItem="bi7-bz-8qJ" firstAttribute="centerX" secondItem="Dcj-44-9nw" secondAttribute="centerX" id="teb-Z5-n3R"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRY-Q6-C7y" customClass="GCameraButton" customModule="CustomCam" customModuleProvider="target">
@@ -78,6 +86,7 @@
                             <constraint firstItem="Dcj-44-9nw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FHD-lv-i28"/>
                             <constraint firstAttribute="bottom" secondItem="Dcj-44-9nw" secondAttribute="bottom" id="INZ-py-85b"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sRY-Q6-C7y" secondAttribute="bottom" constant="20" id="kNQ-qw-Dm4"/>
+                            <constraint firstItem="dTG-2S-Rob" firstAttribute="centerY" secondItem="sRY-Q6-C7y" secondAttribute="centerY" id="rUg-ei-eyA"/>
                             <constraint firstItem="sRY-Q6-C7y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rm2-Jk-p0x"/>
                         </constraints>
                     </view>
@@ -85,6 +94,7 @@
                         <outlet property="cameraButton" destination="sRY-Q6-C7y" id="YCB-sB-ECx"/>
                         <outlet property="cameraSelection" destination="0zj-6g-iA4" id="GpO-tC-K7w"/>
                         <outlet property="controlView" destination="Dcj-44-9nw" id="5GM-qq-fPH"/>
+                        <outlet property="imgView" destination="bi7-bz-8qJ" id="wtx-g6-JUU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

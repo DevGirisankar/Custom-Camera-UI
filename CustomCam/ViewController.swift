@@ -7,9 +7,8 @@
 
 import UIKit
 import Photos
-
-
 class ViewController: UIViewController {
+    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var cameraButton: GCameraButton!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var cameraSelection: GHPicker!
@@ -21,6 +20,7 @@ class ViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        cameraButton.delegate = self
         super.viewDidAppear(animated)
         self.cameraManager = GCamera(view: self.view)
         self.cameraManager?.camereType = .photo
@@ -44,6 +44,7 @@ class ViewController: UIViewController {
                 }
             }
         }
+        cameraSelection.captureModesList = ["CLARENDON","GINGHAM","JUNO","LARK","MAYFAIR","SIERRA","VALENCIA","WALDEN"]
     }
     @objc private func zoomingGesture(gesture: UIPanGestureRecognizer) {
         let velocity = gesture.velocity(in: self.view)
@@ -110,30 +111,6 @@ extension CaseIterable where Self: Equatable {
         return all[next == all.endIndex ? all.startIndex : next]
     }
 }
-//extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//    
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return 5
-//    }
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        let modeView = UIView()
-//        modeView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-//        let modeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-//        modeLabel.textColor = .yellow
-//        modeLabel.text = "title"//captureModesList[row]
-//        modeLabel.textAlignment = .center
-//        modeView.addSubview(modeLabel)
-//        modeView.transform = CGAffineTransform(rotationAngle: 90 * (.pi/180))
-//        return modeView
-//    }
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//      return 100
-//    }
-//
-//}
 extension ViewController : gcamButtonDelegate {
     func imageCapture() {
         debugPrint(#function)
@@ -143,7 +120,7 @@ extension ViewController : gcamButtonDelegate {
             cameraManager.startRecording()
         }
     }
-    
+
     func videoCapture(isRecording: Bool) {
         print(#function)
         guard let cameraManager = self.cameraManager else { return }

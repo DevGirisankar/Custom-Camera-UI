@@ -8,7 +8,45 @@
 import Foundation
 import UIKit
 import AVFoundation
+/*
+let CMYKHalftone = "CMYK Halftone"
+let CMYKHalftoneFilter = CIFilter(name: "CICMYKHalftone", parameters: ["inputWidth" : 20, "inputSharpness": 1])
 
+let ComicEffect = "Comic Effect"
+let ComicEffectFilter = CIFilter(name: "CIComicEffect")
+
+let Crystallize = "Crystallize"
+let CrystallizeFilter = CIFilter(name: "CICrystallize", parameters: ["inputRadius" : 30])
+
+let Edges = "Edges"
+let EdgesEffectFilter = CIFilter(name: "CIEdges", parameters: ["inputIntensity" : 10])
+
+let HexagonalPixellate = "Hex Pixellate"
+let HexagonalPixellateFilter = CIFilter(name: "CIHexagonalPixellate", parameters: ["inputScale" : 40])
+
+let Invert = "Invert"
+let InvertFilter = CIFilter(name: "CIColorInvert")
+
+let Pointillize = "Pointillize"
+let PointillizeFilter = CIFilter(name: "CIPointillize", parameters: ["inputRadius" : 30])
+
+let LineOverlay = "Line Overlay"
+let LineOverlayFilter = CIFilter(name: "CILineOverlay")
+
+let Posterize = "Posterize"
+let PosterizeFilter = CIFilter(name: "CIColorPosterize", parameters: ["inputLevels" : 5])
+
+let Filters = [
+    CMYKHalftone: CMYKHalftoneFilter,
+    ComicEffect: ComicEffectFilter,
+    Crystallize: CrystallizeFilter,
+    Edges: EdgesEffectFilter,
+    HexagonalPixellate: HexagonalPixellateFilter,
+    Invert: InvertFilter,
+    Pointillize: PointillizeFilter,
+    LineOverlay: LineOverlayFilter,
+    Posterize: PosterizeFilter
+] */
 class GCamera: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate,
                AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate, AVCaptureFileOutputRecordingDelegate {
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
@@ -22,6 +60,8 @@ class GCamera: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate,
         }
         
     }
+    
+//    let FilterNames = [String](Filters.keys)
     
     typealias VideoCompletion = (URL) -> Void
     typealias PhotoCompletion = (UIImage) -> Void
@@ -255,7 +295,7 @@ class GCamera: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate,
     private func configureSession() {
         DispatchQueue.main.async { [self] in
             
-            session.sessionPreset = .high
+            session.sessionPreset = .photo
             // Setup Camera
             let camera = AVCaptureDevice.default(for: AVMediaType.video)!
             do {

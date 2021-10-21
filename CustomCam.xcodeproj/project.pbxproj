@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181FF5A32721819600BA2602 /* GHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FF5A22721819600BA2602 /* GHPicker.swift */; };
 		184C8E1F271D4C270061AD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C8E1E271D4C270061AD56 /* AppDelegate.swift */; };
 		184C8E21271D4C270061AD56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C8E20271D4C270061AD56 /* SceneDelegate.swift */; };
 		184C8E23271D4C270061AD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C8E22271D4C270061AD56 /* ViewController.swift */; };
 		184C8E26271D4C270061AD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184C8E24271D4C270061AD56 /* Main.storyboard */; };
 		184C8E28271D4C280061AD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184C8E27271D4C280061AD56 /* Assets.xcassets */; };
 		184C8E2B271D4C280061AD56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184C8E29271D4C280061AD56 /* LaunchScreen.storyboard */; };
-		184C8E33271D599C0061AD56 /* CamButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C8E32271D599C0061AD56 /* CamButton.swift */; };
+		184C8E33271D599C0061AD56 /* GCameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C8E32271D599C0061AD56 /* GCameraButton.swift */; };
 		184C8E35271DAF210061AD56 /* GCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C8E34271DAF210061AD56 /* GCamera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181FF5A22721819600BA2602 /* GHPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPicker.swift; sourceTree = "<group>"; };
 		184C8E1B271D4C270061AD56 /* CustomCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C8E1E271D4C270061AD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184C8E20271D4C270061AD56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,7 +28,7 @@
 		184C8E27271D4C280061AD56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		184C8E2A271D4C280061AD56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		184C8E2C271D4C280061AD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		184C8E32271D599C0061AD56 /* CamButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamButton.swift; sourceTree = "<group>"; };
+		184C8E32271D599C0061AD56 /* GCameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCameraButton.swift; sourceTree = "<group>"; };
 		184C8E34271DAF210061AD56 /* GCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCamera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +65,8 @@
 				184C8E1E271D4C270061AD56 /* AppDelegate.swift */,
 				184C8E20271D4C270061AD56 /* SceneDelegate.swift */,
 				184C8E22271D4C270061AD56 /* ViewController.swift */,
-				184C8E32271D599C0061AD56 /* CamButton.swift */,
+				184C8E32271D599C0061AD56 /* GCameraButton.swift */,
+				181FF5A22721819600BA2602 /* GHPicker.swift */,
 				184C8E34271DAF210061AD56 /* GCamera.swift */,
 				184C8E24271D4C270061AD56 /* Main.storyboard */,
 				184C8E27271D4C280061AD56 /* Assets.xcassets */,
@@ -146,9 +149,10 @@
 			files = (
 				184C8E23271D4C270061AD56 /* ViewController.swift in Sources */,
 				184C8E1F271D4C270061AD56 /* AppDelegate.swift in Sources */,
+				181FF5A32721819600BA2602 /* GHPicker.swift in Sources */,
 				184C8E21271D4C270061AD56 /* SceneDelegate.swift in Sources */,
 				184C8E35271DAF210061AD56 /* GCamera.swift in Sources */,
-				184C8E33271D599C0061AD56 /* CamButton.swift in Sources */,
+				184C8E33271D599C0061AD56 /* GCameraButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
