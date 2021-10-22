@@ -16,7 +16,7 @@ enum sideMenuOptions:String {
     case filter
     case music
 }
-class ViewController: UIViewController {
+class ViewController: AssetSelectionViewController {
     @IBOutlet weak var galleryView: UIImageView!
     @IBOutlet weak var sideMenu: SelfSizedTableView!
     @IBOutlet weak var cameraButton: GCameraButton!
@@ -49,18 +49,23 @@ class ViewController: UIViewController {
                         let alertController = UIAlertController(title: "Your image was successfully saved", message: nil, preferredStyle: .alert)
                         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                         alertController.addAction(defaultAction)
-                        self?.present(alertController, animated: true, completion: nil)
+                        self?.present(alertController, animated: true, completion: { [unowned self] in
+                            self?.updateGallery()
+                        })
                     }
                 } else {
                     print(error.debugDescription)
                 }
             }
         }
+        updateGallery()
+        cameraSelection.captureModesList = ["CLARENDON","GINGHAM","JUNO","LARK","MAYFAIR","SIERRA","VALENCIA","WALDEN"]
+    }
+    func updateGallery() {
         cameraManager?.getLastPhoto({ [unowned self] image in
             guard let image = image else {return}
             galleryView.image = image
         })
-        cameraSelection.captureModesList = ["CLARENDON","GINGHAM","JUNO","LARK","MAYFAIR","SIERRA","VALENCIA","WALDEN"]
     }
     override func viewDidLayoutSubviews() {
         recalculateSideMenuHeight()
@@ -75,7 +80,11 @@ class ViewController: UIViewController {
     }
     //MARK: -  button actions
     @IBAction func showGalleryPressed(_ sender: Any) {
-        
+        self.openGallery(isCam: false)
+    }
+    override func loadAsset(_ asset: AVAsset?, _ image: UIImage?) {
+        //        print(asset)
+        //        print(image)
     }
     @IBAction func closeButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: { [weak self] in
@@ -85,7 +94,7 @@ class ViewController: UIViewController {
     @IBAction private func flipButtonPressed(_ button: UIButton) {
         guard let cameraManager = self.cameraManager else { return }
         UIView.transition(with: button , duration: 0.3, options: .transitionFlipFromLeft, animations: {
-        cameraManager.flip()
+            cameraManager.flip()
         }, completion: nil)
     }
     @IBAction private func flashButtonPressed(_ button: UIButton) {
@@ -147,7 +156,7 @@ extension ViewController : gcamButtonDelegate {
             cameraManager.startRecording()
         }
     }
-
+    
     func videoCapture(isRecording: Bool) {
         print(#function)
         guard let cameraManager = self.cameraManager else { return }

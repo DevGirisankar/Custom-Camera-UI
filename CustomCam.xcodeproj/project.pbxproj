@@ -18,6 +18,7 @@
 		184C8E35271DAF210061AD56 /* GCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C8E34271DAF210061AD56 /* GCamera.swift */; };
 		18A016322722AFDB00A53200 /* GCustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A016312722AFDB00A53200 /* GCustomTableView.swift */; };
 		18A016342722B05D00A53200 /* CGCameraSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A016332722B05D00A53200 /* CGCameraSideMenu.swift */; };
+		18A016362722F9B400A53200 /* assetSelectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A016352722F9B400A53200 /* assetSelectionHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		184C8E34271DAF210061AD56 /* GCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCamera.swift; sourceTree = "<group>"; };
 		18A016312722AFDB00A53200 /* GCustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCustomTableView.swift; sourceTree = "<group>"; };
 		18A016332722B05D00A53200 /* CGCameraSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGCameraSideMenu.swift; sourceTree = "<group>"; };
+		18A016352722F9B400A53200 /* assetSelectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assetSelectionHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				184C8E34271DAF210061AD56 /* GCamera.swift */,
 				18A016332722B05D00A53200 /* CGCameraSideMenu.swift */,
 				184C8E24271D4C270061AD56 /* Main.storyboard */,
+				18A016352722F9B400A53200 /* assetSelectionHelper.swift */,
 				184C8E27271D4C280061AD56 /* Assets.xcassets */,
 				184C8E29271D4C280061AD56 /* LaunchScreen.storyboard */,
 				184C8E2C271D4C280061AD56 /* Info.plist */,
@@ -159,6 +162,7 @@
 				184C8E21271D4C270061AD56 /* SceneDelegate.swift in Sources */,
 				18A016322722AFDB00A53200 /* GCustomTableView.swift in Sources */,
 				184C8E35271DAF210061AD56 /* GCamera.swift in Sources */,
+				18A016362722F9B400A53200 /* assetSelectionHelper.swift in Sources */,
 				18A016342722B05D00A53200 /* CGCameraSideMenu.swift in Sources */,
 				184C8E33271D599C0061AD56 /* GCameraButton.swift in Sources */,
 			);
