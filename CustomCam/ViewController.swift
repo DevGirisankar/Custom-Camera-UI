@@ -7,16 +7,28 @@
 
 import UIKit
 import Photos
+class sideMenuTableviewCell:UITableViewCell {
+    @IBOutlet weak var iconView: UIImageView!
+}
+enum sideMenuOptions:String {
+    case timer
+    case edit
+    case filter
+    case music
+}
 class ViewController: UIViewController {
-    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var galleryView: UIImageView!
+    @IBOutlet weak var sideMenu: SelfSizedTableView!
     @IBOutlet weak var cameraButton: GCameraButton!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var cameraSelection: GHPicker!
     private var cameraManager: GCamera?
+    var sideMenuOptions : [sideMenuOptions] = [.music,.timer,.filter,.edit]
     override func viewDidLoad() {
         super.viewDidLoad()
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(zoomingGesture(gesture:)))
         self.view.addGestureRecognizer(gesture)
+        setupSideMenu()
     }
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -44,7 +56,14 @@ class ViewController: UIViewController {
                 }
             }
         }
+        cameraManager?.getLastPhoto({ [unowned self] image in
+            guard let image = image else {return}
+            galleryView.image = image
+        })
         cameraSelection.captureModesList = ["CLARENDON","GINGHAM","JUNO","LARK","MAYFAIR","SIERRA","VALENCIA","WALDEN"]
+    }
+    override func viewDidLayoutSubviews() {
+        recalculateSideMenuHeight()
     }
     @objc private func zoomingGesture(gesture: UIPanGestureRecognizer) {
         let velocity = gesture.velocity(in: self.view)
@@ -55,6 +74,14 @@ class ViewController: UIViewController {
         }
     }
     //MARK: -  button actions
+    @IBAction func showGalleryPressed(_ sender: Any) {
+        
+    }
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: { [weak self] in
+            self?.cameraManager?.stopRecording()
+        })
+    }
     @IBAction private func flipButtonPressed(_ button: UIButton) {
         guard let cameraManager = self.cameraManager else { return }
         UIView.transition(with: button , duration: 0.3, options: .transitionFlipFromLeft, animations: {

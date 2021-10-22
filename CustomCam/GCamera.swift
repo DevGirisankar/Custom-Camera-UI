@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import AVFoundation
+import Photos
+
 /*
 let CMYKHalftone = "CMYK Halftone"
 let CMYKHalftoneFilter = CIFilter(name: "CICMYKHalftone", parameters: ["inputWidth" : 20, "inputSharpness": 1])
@@ -126,7 +128,8 @@ class GCamera: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate,
             }
         }
     }
-    
+    var latestPhotoAssetsFetched: PHFetchResult<PHAsset>? = nil
+
     open var videoCompletion: VideoCompletion?
     open var photoCompletion: PhotoCompletion?
     open var camereType: CameraType = .photo 
@@ -152,6 +155,22 @@ class GCamera: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate,
         case .video:
             self.updateFileStorage(with: self.camereType)
             startvRecording()
+        }
+    }
+    open func getLastPhoto(_ completion: @escaping (UIImage?) -> Void) {
+        self.latestPhotoAssetsFetched = self.fetchLatestPhotos(forCount: 1)
+        // Get the asset.
+        if let asset = self.latestPhotoAssetsFetched?[0] {
+            // Request the image.
+            PHImageManager.default().requestImage(for: asset,
+                                                     targetSize: CGSize(width: 100, height: 100),
+                                                     contentMode: .aspectFill,
+                                                     options: nil) { (image, _) in
+                // By the time the image is returned, the cell may has been recycled.
+                return completion(image)
+            }
+        } else {
+            completion(nil)
         }
     }
     private func currentVideoOrientation() -> AVCaptureVideoOrientation {
@@ -390,5 +409,17 @@ extension GCamera {
             }
         }
     }
-    
+    func fetchLatestPhotos(forCount count: Int?) -> PHFetchResult<PHAsset> {
+
+        // Create fetch options.
+        let options = PHFetchOptions()
+        // If count limit is specified.
+        if let count = count { options.fetchLimit = count }
+        // Add sortDescriptor so the lastest photos will be returned.
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        options.sortDescriptors = [sortDescriptor]
+        // Fetch the photos.
+        return PHAsset.fetchAssets(with: .image, options: options)
+
+    }
 }
